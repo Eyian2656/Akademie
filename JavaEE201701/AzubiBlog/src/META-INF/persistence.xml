@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+	<persistence-unit name="ExampleDS">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+		<class>com.csc.azubiblog.model.User</class>
+		<class>com.csc.azubiblog.model.Blog</class>
+		<class>com.csc.azubiblog.model.Comment</class>
+		<properties>
+
+			<!-- Properties für JavaDB Embedded -->
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;create=true" />
+			<property name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />
+			<property name="dialect" value="org.hibernate.dialect.H2Dialect" />
+
+			<!-- Properties für Hibernate -->
+			<property name="hibernate.current_session_context_class"
+				value="thread" />
+			<property name="hibernate.show_sql" value="true" />
+
+		</properties>
+	</persistence-unit>
+</persistence>
