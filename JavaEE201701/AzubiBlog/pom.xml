@@ -8,6 +8,11 @@
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>htmlressourcen</directory>
+			</resource>
+		</resources>
 		<testSourceDirectory>test</testSourceDirectory>
 		<testResources>
 			<testResource>

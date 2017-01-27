@@ -14,6 +14,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+/**
+ * @author NFriese, FKohlhaas
+ * 
+ * * Model class comment
+ * Collects contents for "comment", referencing on:
+ * {@link Blog} as blog, {@link User} as author
+ */
 @Entity
 @Table(name = "Comments")
 @NamedQueries(
@@ -21,7 +28,7 @@ import javax.persistence.Transient;
 public class Comment extends ValueObject {
 	
 	/**
-	 * 
+	 * Auto generated serial versionUID
 	 */
 	private static final long serialVersionUID = 1172966368902738644L;
 
@@ -30,12 +37,24 @@ public class Comment extends ValueObject {
 	private String content;
 	private Blog blog;
 
+	/**
+	 * Empty constructor
+	 */
 	public Comment(){}
 	
+	/**
+	 * Constructor
+	 * @param author - Comment author
+	 * @param content - Comment content
+	 */
 	public Comment(Long author, String content){
 		setAuthor(author);
 		this.content = content;
 	}
+	
+	/*
+	 * Auto generated getters and setters using super(ValueObject)
+	 */
 	
 	@Override
 	@Id

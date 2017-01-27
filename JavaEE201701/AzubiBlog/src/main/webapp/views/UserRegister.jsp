@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>DisplayAddress</title>
+<title>Register!</title>
 <link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../bootstrap-3.3.7-dist/css/signing.css" rel="stylesheet">
 

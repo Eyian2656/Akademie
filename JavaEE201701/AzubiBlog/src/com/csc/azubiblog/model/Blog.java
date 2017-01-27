@@ -17,13 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Model Klasse <b>furchtbar wichtig für einen Blog</b> </br>
- * Sammelt inhalte für den Blog hat referenzen auf </br>
- * {@link Category} als Kategorie, {@link User} als Author, {@link Comment} als
- * Comment Liste
+ * @author NFriese, FKohlhaas
  * 
- * @author ldonker
- *
+ * * Model class blog
+ * Collects contents for "Blog", referencing on:
+ * {@link Category} as category, {@link User} as author, {@link Comment} as
+ * comment list
  */
 @Entity
 @Table(name = "Blogs")
@@ -34,12 +33,18 @@ import javax.persistence.Table;
 public class Blog extends ValueObject {
 
 	/**
-	 * 
+	 * Auto Generated serial versionUID
 	 */
 	private static final long serialVersionUID = 1136041743179144586L;
 	public static final String GET_BLOGS_BY_AUTHOR = "get_blogs_by_author";
 	public static final String GET_BLOGS_BY_CATEGORY = "get_blogs_by_category";
 	
+	/**
+	 * m_title = Blog title
+	 * m_category = Blog category
+	 * m_commentsList = List of comments for the blog
+	 * m_content = Blog content
+	 */
 	private String m_title;
 	private Category m_category;
 	private List<Comment> m_commentsList = new ArrayList<Comment>();
@@ -48,11 +53,11 @@ public class Blog extends ValueObject {
 	public Blog(){}
 	
 	/**
-	 * Konstruktor
+	 * Constrcutor
 	 * 
-	 * @param title
-	 * @param category
-	 * @param author
+	 * @param title - Blog title
+	 * @param category - Blog category
+	 * @param author - Author Id
 	 */
 	public Blog(String title, Category category, Long author) {
 		m_title = title;
@@ -61,7 +66,7 @@ public class Blog extends ValueObject {
 	}
 
 	/*
-	 * Getters and Setters
+	 * Auto generated getters and setters using super(ValueObject)
 	 */
 
 	@Override

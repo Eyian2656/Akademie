@@ -3,10 +3,16 @@ package com.csc.azubiblog.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ValueObject implements Serializable{
+/**
+ * @author NFriese, FKohlhaas
+ * 
+ *         Model class ValueObject Referencing on: {@link Blog} as blog,
+ *         {@link Comment} as comment, {@link User} as Author as super
+ */
+public class ValueObject implements Serializable {
 
 	/**
-	 * 
+	 * Auto generated serial versionUID
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -16,14 +22,15 @@ public class ValueObject implements Serializable{
 	private Date m_creationDate = new Date();
 	private Date m_updateDate;
 
+	/**
+	 * Empty constructor
+	 */
 	public ValueObject() {
 	}
-
-//	public ValueObject(User author) {
-//		if (author != null) {
-//			m_author = Long.valueOf(author.getId());
-//		}
-//	}
+	
+	/*
+	 * Auto generated getters and setters
+	 */
 
 	public long getId() {
 		return id;

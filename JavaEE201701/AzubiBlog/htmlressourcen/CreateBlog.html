@@ -1,0 +1,47 @@
+<div class="jumbotron">
+	<div class="container theme-showcase" role="main">
+	<form class="form-signin" action="${pageContext.request.contextPath}/CreateBlog" method="post">
+			<h2 class="form-signin-heading">Create a new blog now!</h2>
+
+		<div class="form-group">	
+			<label>Title</label> 
+			<input type="text" name="inputAlias" id="inputAlias" class="form-control"
+				placeholder="Any blog title..." required="" autofocus="">
+		</div> 
+
+		<div class="form-group">
+			<label>Author</label> 
+			<input type="text" name="inputAuthor" id="inputAuthor" class="form-control"  required="" autofocus="" placeholder="{%USERNAME%}" disabled>
+		</div>
+
+		<div class="form-group">
+			<label>Content:</label>
+			<textarea class="form-control" rows="5" name="inputContent" id="inputContent" placeholder="Input blog content in here..."></textarea>
+    	</div>
+
+		<div class="form-group">
+			<label> Category </label>
+			<input type="hidden" id="inputCategory" name="inputCategory" value="" />
+			<div class="dropdown">
+				<i class="dropdown-arrow dropdown-arrow-inverse"></i>
+				<button class="btn btn-primary status">Select a category...</button>
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> </button>
+				<ul class="dropdown-menu dropdown-inverse">
+					<li><a href="#">pending</a></li>
+					<li><a href="#">active</a></li>
+					<li><a href="#">discontinued</a></li>
+				</ul>
+			</div>
+		</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+		</form>
+
+		</div>
+
+	<script>
+	$('.dropdown-inverse li > a').click(function(e)
+	{
+	    $('.status').text(this.innerHTML);
+		$('#categoryInput').val(this.innerHTML);
+	});
+	</script>

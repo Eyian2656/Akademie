@@ -23,21 +23,28 @@ import com.csc.azubiblog.model.Category;
 public class BlogManagerTest {
 
 	private BlogManager m_blogManager;
-	private static Properties props;
 	private InitialContext ctx;
 
 	@BeforeClass
 	public static void beforeClass() {
 		Properties props = new Properties();
-		
-			try {
-				props.load(BlogManagerTest.class.getClassLoader().getResourceAsStream("jndi.properties"));
-			} catch (IOException e) {
-				fail(e.getMessage());
-			}
+
+		try {
+			props.load(BlogManagerTest.class.getClassLoader().getResourceAsStream("jndi.properties"));
+		} catch (IOException e) {
+			fail(e.getMessage());
+		}
+
 	}
-	
-	private boolean connect(){
+
+	private boolean connect() {
+		Properties props = new Properties();
+
+		try {
+			props.load(BlogManagerTest.class.getClassLoader().getResourceAsStream("jndi.properties"));
+		} catch (IOException e) {
+			fail(e.getMessage());
+		}
 		try {
 			ctx = new InitialContext(props);
 
@@ -50,8 +57,8 @@ public class BlogManagerTest {
 			return false;
 		}
 	}
-	
-	private boolean connetionClose(){
+
+	private boolean connetionClose() {
 		try {
 			ctx.close();
 			return true;
@@ -60,6 +67,29 @@ public class BlogManagerTest {
 			fail(e.getMessage());
 			return false;
 		}
+	}
+
+	public List<Blog> getBlogsByAuthorTest(long id) {
+
+		List<Blog> blogs = new ArrayList<Blog>();
+
+		for (int i = 0; i <= 10; i++) {
+			Blog testBlog;
+			if (i % 2 == 0) {
+				testBlog = new Blog("AwesomeBlog: How to be cool Part:" + i, Category.HAXX0R, Long.valueOf(id));
+			} else {
+				testBlog = new Blog("AwesomeBlog: How to be cool Part:" + i, Category.HAXX0R, Long.valueOf(id));
+			}
+			connect();
+			blogs.add(m_blogManager.insertBlog(testBlog));
+			connetionClose();
+		}
+
+		connect();
+		List<Blog> resultBlogs = m_blogManager.getBlogsByAuthor(Long.valueOf(id));
+		connetionClose();
+
+		return resultBlogs;
 	}
 
 	@Test
@@ -127,8 +157,8 @@ public class BlogManagerTest {
 				}
 			}
 		}
-		
-		for(Blog compareBlog : blogs){
+
+		for (Blog compareBlog : blogs) {
 			connect();
 			assertTrue(m_blogManager.deleteBlog(compareBlog));
 			connetionClose();
@@ -166,8 +196,8 @@ public class BlogManagerTest {
 				}
 			}
 		}
-		
-		for(Blog compareBlog : blogs){
+
+		for (Blog compareBlog : blogs) {
 			connect();
 			assertTrue(m_blogManager.deleteBlog(compareBlog));
 			connetionClose();

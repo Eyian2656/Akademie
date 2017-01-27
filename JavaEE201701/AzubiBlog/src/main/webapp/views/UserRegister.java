@@ -18,9 +18,6 @@ import com.csc.azubiblog.model.User;
 @WebServlet("/UserRegister")
 public class UserRegister extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1228635799790224396L;
 	public String m_alias = null;
 	public String m_lastname = null;
@@ -55,7 +52,6 @@ public class UserRegister extends HttpServlet {
 				response.sendRedirect("../index.jsp#success");
 			}
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

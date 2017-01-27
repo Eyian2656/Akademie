@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.csc.azubiblog.controller.Usercontext;
 import com.csc.azubiblog.model.User;
@@ -22,7 +23,6 @@ public class UserSignIn extends HttpServlet {
 	public String m_alias = null;
 	public String m_passwort = null;
 
-	private User m_user = null;
 
 	@EJB
 	private Usercontext m_usercontext;
@@ -46,7 +46,16 @@ public class UserSignIn extends HttpServlet {
 					value.setOnline(true); // bringt noch nichts weil Objekt nur
 											// in Klasse
 					// TODO tuh anmelde zeug in der Usercontext.
-					response.sendRedirect("views/ApplicationStart.jsp");
+
+					HttpSession session = request.getSession(true);
+					String userIDKey = new String("USERID");
+					String userID = value.getId() + "";
+					String userNameKey = new String("USERNAME");
+					String userName = m_alias;
+					session.setAttribute(userIDKey, userID);
+					session.setAttribute(userNameKey, userName);
+
+					response.sendRedirect("./ApplicationStart");
 					return;
 				}
 			}

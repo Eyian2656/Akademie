@@ -12,8 +12,11 @@
 
 <title>Welcome</title>
 
+<jsp:useBean id="blog" class="com.csc.azubiblog.model.Blog" scope="page" />
+
 <!-- Bootstrap core CSS -->
-<link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+<link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -68,6 +71,28 @@
 				something more unique by building on or modifying it.</p>
 		</div>
 
+
+		<%
+		blog.getContent();
+		pageContext.setAttribute("name", blog.getCategory(), pageContext.SESSION_SCOPE);
+
+		String result = request.getParameter("address");
+
+		// Errorpage aktivieren mit einer Ausnahme (s.o.)
+		// int x = 4 / 0;
+
+		if (result != null && result.length() > 0) {
+			out.println(result);
+		}
+		// Aufruf einer anderen JSP mit Java
+		if (result.equals(""))
+			response.sendRedirect("Weiter.jsp");
+		String button = request.getParameter("senden1");
+		System.out.println(button);
+		button = request.getParameter("senden2");
+		System.out.println(button);
+		
+	%>
 
 	</div>
 </body>

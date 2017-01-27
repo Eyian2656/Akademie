@@ -1,0 +1,45 @@
+<div class="jumbotron">
+	<div class="container theme-showcase" role="main">
+    <form class="form-signin" action="${pageContext.request.contextPath}/ShowSingleBlog" method="post">
+			<h2 class="form-signin-heading"></h2>
+
+		<div class="form-group">	
+			<label>Title</label> 
+            <input type="text" name="title" id="title" class="form-control"  required="" autofocus="" placeholder="" value="{%TITLE%}" readonly>
+		</div> 
+
+		<div class="form-group">
+			<label>Author</label> 
+			<input type="text" name="author" id="author" class="form-control"  required="" autofocus="" placeholder="" value="{%AUTHOR%}" readonly>
+		</div>
+
+		<div class="form-group">
+			<label>Category</label> 
+			<input type="text" name="category" id="author" class="form-control"  required="" autofocus="" placeholder="" value="{%CATEGORY%}" readonly>
+		</div>
+
+		<div class="form-group">
+				<label>Content:</label>
+				<textarea class="form-control" rows="5" id="content" placeholder="Input blog content in here..." readonly>{%CONTENT%}</textarea>
+    	</div>
+	</form>
+
+	<form class="form-signin" action="${pageContext.request.contextPath}/ShowSingleBlog" method="post">
+			<center><h2 class="heading"><u>Comments</u></h2></center>
+        {%COMMENT%}
+		<div class="form-group">
+				<label>Content:</label>
+				<textarea class="form-control" rows="5" id="newComment" placeholder="Write down the commentary in here.."></textarea>
+    	</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Comment!</button>
+	</form>
+
+		</div>
+
+<script>
+$('.dropdown-inverse li > a').click(function(e)
+{
+    $('.status').text(this.innerHTML);
+	$('#categoryInput').val(this.innerHTML);
+});
+</script>
